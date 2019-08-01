@@ -1,0 +1,15 @@
+1.  Install Node JS. Basic Installation.
+2.  On Command Prompt:
+--------------------------
+Install Ionic                               -           npm install -g ionic
+Make a directory for Ionic Projects         -           mkdir Ionic
+
+Start Ionic Project -     cd Ionic  (cmd, Navigate to project folder)
+                          ionic start   (cmd)
+                          Give a project name
+                          choose a template (navigate using TAB)
+                          ionic server  (cmd, start the application)
+                          
+                          
+                          
+                          
