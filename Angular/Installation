@@ -1,0 +1,4 @@
+Install Node JS
+Install npm (not sure)
+
+npm install -g @angular/cli@latest                  - Install Angular
