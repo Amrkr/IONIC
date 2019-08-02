@@ -1,0 +1,15 @@
+Install Node & npm
+npm install -g typescript ts-node           (ts-node is a little command line tool which compiles TypeScript using one line command)
+tsc --help                                  (check for successful installation of TypeScript)
+
+
+                                                        First Project (Fetch JSON File)
+------------------------------------------------------------------------------------------------------------------------------------------
+make a directory & navigate to it in CMD
+Create a JSON Package : (npm init -y)
+Install Axios (To make network request) :   npm install axios
+Open VS Code from this directory: (code .)
+Compile .ts file:   (tsc index.ts)    It will generate a index.js file equivalent to index.ts
+Run index.js file using Node:   (node index.js)     It will execute in CMD
+Compile & Run TS file (index.ts): (ts-node index.ts)        it compiles TS file and generateds JS file then runs the generated JS file
+
