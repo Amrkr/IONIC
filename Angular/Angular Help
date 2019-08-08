@@ -1,0 +1,57 @@
+*ngFor                        causes the <div> to be repeated for each product in the list.
+                              *ngFor is a "structural directive". Structural directives shape or reshape the DOM's structure, typically 
+                              by adding, removing, and manipulating the elements to which they are attached. Any directive with 
+                              an * is a structural directive.
+                              
+                              <h2>Products</h2>
+                              <div *ngFor="let product of products">
+                              </div>
+                              
+{{ }}                         interpolation syntax. Interpolation renders a property's value as text. Inside the <div>, 
+                              add an <h3> heading to display the interpolation of the product's name property:  
+                              
+                              <h2>Products</h2>
+                              <div *ngFor="let product of products">
+                              <h3>{{ product.name }}</h3>
+                              </div>
+                              
+  [ ]                         property binding
+                              <h2>Products</h2>
+                              <div *ngFor="let product of products">
+                              <a [title]="product.name + ' details'">{{ product.name }}</a>
+                              </div>
+                              
+*ngIf                         directive so that the paragraph element is only created if the current product has a description.
+                              <p *ngIf="product.description">
+                                  Description: {{ product.description }}
+                              </p>
+                              
+( )                           Event binding
+
+routerLink                    The routerLink defines how the user navigates to the route (or URL) declaratively in the component template.
+                              
+                              
+                              
+component = A component class + An HTML template + Component-specific styles
+
+A component class, which handles data and functionality. In the previous section, the product data and the share() method were defined 
+for you in the component class.
+An HTML template, which determines what is presented to the user. In the previous section, you modified the product list's HTML 
+template to display the name, description, and a "Share" button for each product.
+Component-specific styles that define the look and feel. The product list does not define any styles.
+
+app-root is the application shell. This is the first component to load, and the parent of all other components. 
+You can think of it as the base page.
+
+ @Component decorator. This indicates that the following class is a component. It provides metadata about the component, 
+ including its templates, styles, and a selector.
+ 
+ The selector is used to identify the component. The selector is the name you give the Angular component when it is rendered 
+ as an HTML element on the page. By convention, Angular component selectors begin with the prefix app-, followed by the component name.
+
+The template and style filenames. These reference the other two files generated for you.
+
+
+ 
+ 
+
