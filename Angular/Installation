@@ -3,6 +3,7 @@ Install npm (not sure)
 
 npm install -g @angular/cli@latest                  - Install Angular
 ng new angular-project-name                         - start a project    (first navigate to a folder in which project has to be created)
+ng serve                                            - runthe server and the app
 npm install --save bootstrap@3                      - install bootstrap (version 3)
 
 
