@@ -1,0 +1,316 @@
+#   Component selector can be used as 'html attribute' or 'css class'.
+#   TemplateUrl can be replaced with html template string where other component can be referenced or we can write html.   - Inline HTML
+#   component style can be array of css files
+#   component styles can be inline also.      - Inline CSS
+
+
+SERVERS COMPONENT TS
+------------------------------------------------------------------
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-servers',
+  // selector: '[app-servers]',   //selector as an html atribute
+  // selector: '.app-servers', // selector as css class
+  // templateUrl: './servers.component.html',
+  template: `
+    <app-server></app-server>
+    <b>Html template in component</b>
+    <app-server></app-server>
+  `,
+  styleUrls: ['./servers.component.css']
+})
+export class ServersComponent implements OnInit {
+  constructor() {}
+
+  ngOnInit() {}
+}
+
+
+APP COMPONENT HTML:
+------------------------------------------------------------------
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h3>I'm in the AppComponent!</h3>
+      <hr />
+      <app-servers></app-servers>
+      <!-- <div app-servers></div> -->
+      <!-- <div class="app-servers"></div> -->
+    </div>
+  </div>
+</div>
+
+APP COMPONENT TS
+-----------------------------------------------------------------
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  // styleUrls: ['./app.component.css']
+  styles: [
+    `
+      h3 {
+        color: green;
+      }
+    `
+  ]
+})
+export class AppComponent {
+  title = 'App2';
+}
+
+===================================================================================================================================
+                                                STRING INTERPOLATION  {{ }}
+-----------------------------------------------------------------------------------------------------------------------------------
+Used for reusing a variable in the html code, calling a function. This also works as dynamic.
+
+<h3>{{ 'Server' }} with id {{ serverId }} is {{ getServerStatus() }}</h3>
+
+
+{{ }} is used STRING interpolation.
+'Server' is string.
+serverId is variable.
+{{ getServerStatus() }}  function call. should always return a string.
+
+=======================================================================================================================================
+                                                  PROPERTY BINDING  [[ ]] 
+--------------------------------------------------------------------------------------------------------------------------------------
+Update the html peroperty's value dynamically.
+
+servers component TS
+--------------------------
+export class ServersComponent implements OnInit {
+  allowNewServers = false;
+  constructor() {
+    setTimeout(() => {
+      this.allowNewServers = true;
+    }, 2000);
+  }
+
+  ngOnInit() {}
+}
+
+
+server component html
+--------------------------
+<button class="btn btn-primary" [disabled]="!allowNewServers">
+  Add Server
+</button>
+
+<app-server></app-server>
+<app-server></app-server>
+
+OR
+
+<button
+        class="btn btn-primary"
+        [disabled]="userName === ''"      //property binding with condition
+        (click)="userName = ''"
+      >
+=======================================================================================================================================
+<button class="btn btn-primary" [disabled]="!allowNewServers">
+  Add Server
+</button>
+<p>{{ allowNewServers }}</p>                          //STRING INTERPOLATION
+<p [innerText]="allowNewServers"></p>                 //PROPERTY BINDING
+<app-server></app-server>
+<app-server></app-server>
+
+========================================================================================================================================
+                                                        EVENT BINDING ( )
+----------------------------------------------------------------------------------------------------------------------------------------
+Used to do some action on event like click, etc.
+
+component TS
+------------------------
+export class ServersComponent implements OnInit {
+  allowNewServers = false;
+  serverCreationStatus = 'No server was created!';
+
+  constructor() {
+    setTimeout(() => {
+      this.allowNewServers = true;
+    }, 2000);
+  }
+
+  ngOnInit() {}
+
+  onCreateServer() {
+    this.serverCreationStatus = 'Server was cretaed!';
+  }
+}
+
+
+component HTML
+--------------------------
+<button
+  class="btn btn-primary"
+  [disabled]="!allowNewServers"                 //property binding
+  (click)="onCreateServer()"                    //event binding
+>
+  Add Server
+</button>
+
+<p>{{ serverCreationStatus }}</p>
+
+=======================================================================================================================================
+                                             *** More on Event Binding: Passing value from event
+--------------------------------------------------------------------------------------------------------------------------------------
+component TS
+--------------------------------
+export class ServersComponent implements OnInit {
+  allowNewServers = false;
+  serverCreationStatus = 'No server was created!';
+  serverName = '';
+
+  constructor() {
+    setTimeout(() => {
+      this.allowNewServers = true;
+    }, 2000);
+  }
+
+  ngOnInit() {}
+
+  onCreateServer(): void {
+    this.serverCreationStatus = 'Server was cretaed!';
+  }
+
+  onUpdateServerName(event: Event) {
+    this.serverName = (<HTMLInputElement>event.target).value;
+  }
+}
+
+
+
+component HTML
+---------------------------------------
+<label for="">Server Name</label>
+<input type="text" class="form-control" (input)="onUpdateServerName($event)" />     // $event holds the value of the event. In this case input value.
+
+<p>Server Name: {{ serverName }}</p>
+<button
+  class="btn btn-primary"
+  [disabled]="!allowNewServers"
+  (click)="onCreateServer()"
+>
+  Add Server
+</button>
+<p>{{ allowNewServers }}</p>
+
+====================================================================================================================================
+                                                      TWO WAY DATA BINDING : [(ngModel)]
+-------------------------------------------------------------------------------------------------------------------------------------
+Send data to JS/TS variable and then fetch back to UI.
+
+component TS
+--------------------------
+export class ServersComponent implements OnInit {
+  allowNewServers = false;
+  serverCreationStatus = 'No server was created!';
+  serverName = 'Test Server';
+
+component HTML
+--------------------------
+<input type="text" class="form-control" [(ngModel)]="serverName" />
+
+
+=====================================================================================================================================
+                                                            *ngIf       - Structural Directive
+-------------------------------------------------------------------------------------------------------------------------------------
+show some element on DOM conditionally.
+
+<p *ngIf="serverCreated">Server was created, server name is {{ serverName }}</p>
+
+
+Adding ELSE part to *ngIf
+---------------------------------
+<p *ngIf="serverCreated; else noServer">                        //adding else part onto ngIf directive
+  Server was created, server name is {{ serverName }}
+</p>
+<ng-template #noServer>                        
+  <p>No Server was created.</p>
+</ng-template>
+
+
+   //ng-template is used to spot a particular area and #noServer is the local variable for the page, used for reference.
+   //if condition for ngIf is false, <ng-template> </ng-template> area will show up on the page.
+   
+OR
+
+<p *ngIf="!serverCreated"> No Server was created. </p>
+   
+======================================================================================================================================
+                                                          ngStyle  - Attribute directive
+--------------------------------------------------------------------------------------------------------------------------------------
+Change style of HTML component dynamically.
+Value should be in key: value pair. { cssStyleName: condition }. executed when contion is true.
+
+HTML
+----
+<p [ngStyle]="{ backgroundColor: getColor() }">                               
+  {{ 'Server' }} with id {{ serverId }} is {{ getServerStatus() }}
+</p>
+
+//ngStyle has nothing to do with [] as this is being used for property binding. use ngStyle as property also and bind it to call custom
+functions.
+
+TS
+--
+getColor() {
+    return this.serverStatus === 'online' ? 'green' : 'red';
+  }
+
+=========================================================================================================================================
+                                                            ngClass  - Attribute directive
+--------------------------------------------------------------------------------------------------------------------------------------
+Dynamically add or remove css class.
+Value should be in key: value pair. { className: condition }. executed when contion is true.
+
+HTML
+----
+<p
+  [ngStyle]="{ backgroundColor: getColor() }"
+  [ngClass]="{ online: serverStatus === 'online' }"
+>
+  {{ 'Server' }} with id {{ serverId }} is {{ getServerStatus() }}
+</p>
+
+
+TS
+--
+@Component({
+  selector: 'app-server',
+  templateUrl: './server.component.html',
+  styles: [
+    `
+      .online {
+        color: white;
+      }
+    `
+  ]
+})
+
+//Inline CSS
+
+=======================================================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
