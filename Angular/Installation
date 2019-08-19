@@ -11,6 +11,15 @@ ng new angular-project-name                         - start a project    (first 
 ng serve OR ng serve --open                         - runthe server and the app
 npm install --save bootstrap@3                      - install bootstrap (version 3)
 
+After installing bootstrap: GO to angular app > angular.JSON > 
+under: architect > build > styles >
+Append : "node_modules/bootstrap/dist/css/bootstrap.min.css" as below
+"styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css"
+            ],
+
+
 -------------------------------------------------------------------------------------------------------
 
 ng generate component compName                      -generate new component with html, ts, css file
