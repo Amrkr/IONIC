@@ -22,5 +22,6 @@ Append : "node_modules/bootstrap/dist/css/bootstrap.min.css" as below
 
 -------------------------------------------------------------------------------------------------------
 
-ng generate component compName                      -generate new component with html, ts, css file
+ng generate component compName                      -generate new component with html, ts, css file (also generates a test file)
 
+ng g c folder/comp-name --spec false                -generate component in specific path without test file
