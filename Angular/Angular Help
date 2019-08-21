@@ -30,7 +30,8 @@
 
 routerLink                    The routerLink defines how the user navigates to the route (or URL) declaratively in the component template.
                               
-                              
+ngStyle                       change the style dynamically
+ngClass                       change the css class dynamically
                               
 component = A component class + An HTML template + Component-specific styles
 
