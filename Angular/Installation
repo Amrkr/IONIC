@@ -1,8 +1,15 @@
 Plugins:
 ------------------------------------------------------------------------------------------------
+Augury:   https://chrome.google.com/webstore/search/augury?hl=en-GB
+
+Dubugging:
+------------------------------------------------------------------------------------------------
+Inspect > Go to source > Main.JS     (Contains all code of components)
+OR, Best way
+Inspect > Sources > Webpack > . > src > app > Required_Folder > open .TS file and mark the line to debug.
 
 
-
+================================================================================================
 Install Node JS
 Install npm (not sure)
 
