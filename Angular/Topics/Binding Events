@@ -1,5 +1,5 @@
 Passing value from App Comp. to other component using @Input() decorator
-Executing custom event from App Comp., event created in other comp. using @Outpu() decorator
+Executing custom event from App Comp., event created in other comp. using @Outpu() decorator / Event Emitter
 
                                                                                                                 APP COMPONENT
 ------------------------------------------------------------------------------------------------------------------------------------------
