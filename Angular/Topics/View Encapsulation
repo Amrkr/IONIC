@@ -1,0 +1,19 @@
+@Component({
+  selector: 'app-server-element',
+  templateUrl: './server-element.component.html',
+  styleUrls: ['./server-element.component.css'],
+  encapsulation: ViewEncapsulation.Emulated // None, Native 
+  // Ensures CSS written for this component is applied only on this component OR GLOBAL
+  // depends on browser compatibility
+})
+
+
+COMPONENT CSS
+
+p {
+  color: blue;
+}
+
+label {
+  color: green;
+}
