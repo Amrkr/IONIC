@@ -1,7 +1,7 @@
-Passing value from App Comp. to other component using @Input() decorator
-Executing custom event from App Comp., event created in other comp. using @Outpu() decorator / Event Emitter
+Passing value from Parent Comp. to child component using @Input() decorator
+Executing custom event from Parent Comp., event created in child comp. using @Outpu() decorator / Event Emitter
 
-                                                                                                                APP COMPONENT
+                                                                                                                APP COMPONENT (Parent)
 ------------------------------------------------------------------------------------------------------------------------------------------
                                                                                                                     HTML
 <div class="container">
