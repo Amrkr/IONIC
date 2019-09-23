@@ -1,7 +1,9 @@
 Local reference in template is used for accessing the HTML tag reference. It can be used with any HTML TAG Element.
-BUT REFERENCE CAN'T BE ACCESSED THROUGH JAVASCRIPT
+BUT REFERENCE CAN'T BE ACCESSED THROUGH JAVASCRIPT. Sometime It can be used in place of [(NgModel)].
 
 Reference is for HTML Tag Element, not for it's value. 
+
+localRefName.value can be used on the template also for different HTML Element.
 
 Example
 ----------------------
