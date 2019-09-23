@@ -17,3 +17,7 @@ p {
 label {
   color: green;
 }
+
+
+
+ViewEncapsulation.None - does not apply CSS on current component but all other component.
